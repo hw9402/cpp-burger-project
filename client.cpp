@@ -41,11 +41,19 @@ class Order {
             qMenu.push(menuNumber[i]);
         }
     }
+    void printResult() {
+        int i;
+        for (i = 1; i <= qMenu.size(); i++) {
+            cout << qMenu.front() << "\n";
+            qMenu.pop();
+        }
+    }
 };
 
 int main() {
     Order a;
     a.printIngredient();
     a.plusIngredient();
+    a.printResult();
     return 0;
 }
