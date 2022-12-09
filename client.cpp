@@ -6,7 +6,6 @@ using namespace std;
 class Order {
    public:
     queue<int> qMenu;
-    int menuNumber[MAX_MENU_COUNT];
     void printIngredient() {
         cout << "          MENU         \n";
         cout << " ----------------------\n";
@@ -31,21 +30,23 @@ class Order {
         cout << " ----------------------\n";
     }
     void plusIngredient() {
-        int count, i;
+        int count, i, temp;
         cout << "메뉴 종류의 수를 입력해주세요(최대 10개) : ";
         cin >> count;
-        cout << "메뉴를 입력해주세요\n"
-             << "형식 : 1(메뉴 번호)\n";
+        cout << "메뉴를 입력해주세요 | 형식 : 1(메뉴 번호)\n";
+        qMenu.push(0);
         for (i = 1; i <= count; i++) {
-            cin >> menuNumber[i];
-            qMenu.push(menuNumber[i]);
+            cin >> temp;
+            qMenu.push(temp);
         }
+        qMenu.push(0);
     }
     void printResult() {
         int i;
-        for (i = 1; i <= qMenu.size(); i++) {
-            cout << qMenu.front() << "\n";
-            qMenu.pop();
+        queue<int> temp = qMenu;
+        while (!temp.empty()) {
+            cout << temp.front() << "\n";
+            temp.pop();
         }
     }
 };
