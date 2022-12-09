@@ -1,8 +1,12 @@
 #include <iostream>
+#include <queue>
+#define MAX_MENU_COUNT 11
 using namespace std;
 
 class Order {
    public:
+    queue<int> qMenu;
+    int menuNumber[MAX_MENU_COUNT];
     void printIngredient() {
         cout << "          MENU         \n";
         cout << " ----------------------\n";
@@ -26,10 +30,22 @@ class Order {
         cout << "|    삼겹살    |   18  |\n";
         cout << " ----------------------\n";
     }
+    void plusIngredient() {
+        int count, i;
+        cout << "메뉴 종류의 수를 입력해주세요(최대 10개) : ";
+        cin >> count;
+        cout << "메뉴를 입력해주세요\n"
+             << "형식 : 1(메뉴 번호)\n";
+        for (i = 1; i <= count; i++) {
+            cin >> menuNumber[i];
+            qMenu.push(menuNumber[i]);
+        }
+    }
 };
 
 int main() {
     Order a;
     a.printIngredient();
+    a.plusIngredient();
     return 0;
 }
