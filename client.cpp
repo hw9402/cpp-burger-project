@@ -30,13 +30,17 @@ class Order {
         cout << " ----------------------\n";
     }
     void plusIngredient() {
-        int count, i, temp;
-        cout << "메뉴 종류의 수를 입력해주세요(최대 10개) : ";
-        cin >> count;
-        cout << "메뉴를 입력해주세요 | 형식 : 1(메뉴 번호)\n";
+        int i, temp;
+        cout << "메뉴를 입력해주세요.\n"
+             << "메뉴 입력이 끝나면 -1을 입력해서 종료해주세요.\n";
         qMenu.push(0);
-        for (i = 1; i <= count; i++) {
+        while (true) {
             cin >> temp;
+            if (temp == -1) break;
+            if (temp < 1 || temp > 18) {
+                cout << "없는 메뉴입니다.\n";
+                continue;
+            }
             qMenu.push(temp);
         }
         qMenu.push(0);
