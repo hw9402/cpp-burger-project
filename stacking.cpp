@@ -93,7 +93,7 @@ int main() {
   o.plusIngredient();
   queue<int> temp = o.qMenu;
   while (!temp.empty()) {
-    a.Stacking(&s, temp.front()); // Queue에 저장된 값을 Stack에 저장
+    a.Stacking(&s, temp.front()); // Queue에 저장된 값을 Stack에 저장하기
   }
   int size = o.qMenu.size();
   for (int i = 0; i < size; i++) {
