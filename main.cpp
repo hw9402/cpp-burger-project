@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+#include <algorithm>
 #include <iostream>
 #include <queue>
 using namespace std;
@@ -13,6 +14,8 @@ string menu[20] = {
     "햄",          "치즈",        "치킨",     "양상추",   "베이컨", "토마토",
     "소고기 패티", "불고기 패티", "김치",     "초콜릿",   "젤리",   "누텔라",
     "마요네즈",    "케첩",        "스리라차", "청양고추", "된장",   "삼겹살"};
+int menuId[20] = {1,  2,  3,  4,  5,  6,  7,  8,  9,
+                  10, 11, 12, 13, 14, 15, 16, 17, 18};
 string bread[2] = {"▄▅▆▇▆▅▄", "◥██████◤"};
 
 class St {
@@ -63,8 +66,8 @@ class Order {
              << "메뉴 입력이 끝나면 -1을 입력해서 종료해주세요.\n";
         while (true) {
             cin >> temp;
-            if (temp == -1) break;
-            if (temp < 1 || temp > 18) {
+            if (binary_search(menuId, menuId + 17, -1)) break;
+            if (!(1 <= temp && temp <= 18)) {
                 cout << "없는 메뉴입니다.\n";
                 continue;
             }
