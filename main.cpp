@@ -9,10 +9,11 @@ typedef struct {
   char data[MAX];
 } Stack;
 
-string menu[20] = {
-    "햄",          "치즈",        "치킨",     "양상추",   "베이컨", "토마토",
-    "소고기 패티", "불고기 패티", "김치",     "초콜릿",   "젤리",   "누텔라",
-    "마요네즈",    "케첩",        "스리라차", "청양고추", "된장",   "삼겹살"};
+string menu[20] = {"빵",          "햄",       "치즈",   "치킨",
+                   "양상추",      "베이컨",   "토마토", "소고기 패티",
+                   "불고기 패티", "김치",     "초콜릿", "젤리",
+                   "누텔라",      "마요네즈", "케첩",   "스리라차",
+                   "청양고추",    "된장",     "삼겹살", "빵"};
 
 class St {
 public:
@@ -87,17 +88,40 @@ public:
 
 int main() {
   St a;
+  St Stemp;
   Stack s;
   Order o;
+  a.initStack(&s);
   o.printIngredient();
   o.plusIngredient();
   queue<int> temp = o.qMenu;
   while (!temp.empty()) {
-    a.Stacking(&s, temp.front()); // Queue에 저장된 값을 Stack에 저장하기
+    a.Stacking(&s, temp.front()); // Queue에 저장된 값을 Stack에 저장
+    temp.pop();
   }
   int size = o.qMenu.size();
+  cout << "\n"
+       << "주문하신"
+       << " ";
   for (int i = 0; i < size; i++) {
     cout << menu[a.Pop(&s)];
   }
+  cout << "버거 나왔습니다~~"
+       << "\n";
+
+  for (int i = 0; i < size; i++) {
+    cout << menu[Stemp.Pop(&s)] << "\n";
+  }
   return 0;
 }
+
+/*
+.　 /￣|
+　｜ .｜따봉하나
+,―′　 .|.∧ ∧ 드립니다
+| ＿_）(＾ω＾)
+| ＿_）|⊂)
+| ＿_）|-Ｊ
+ヽ＿)ノ
+
+*/
