@@ -103,10 +103,9 @@ int main() {
          << "주문하신"
          << " ";
     a.Pop(&Stemp);
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < size - 2; i++) {
         cout << menu[a.Pop(&Stemp)];
     }
-    a.Pop(&Stemp);
     cout << "버거 나왔습니다~~"
          << "\n";
     Stemp = s;
