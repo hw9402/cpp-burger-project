@@ -1,54 +1,55 @@
-#include "client.h"
-
 #include <iostream>
 #include <queue>
-#define MAX_MENU_COUNT 11
 using namespace std;
 
-void Order::printIngredient() {
-    cout << "          MENU         \n";
-    cout << " ----------------------\n";
-    cout << "|      햄      |   1   |\n";
-    cout << "|     치즈     |   2   |\n";
-    cout << "|     치킨     |   3   |\n";
-    cout << "|    양상추    |   4   |\n";
-    cout << "|    베이컨    |   5   |\n";
-    cout << "|    토마토    |   6   |\n";
-    cout << "|  소고기 패티 |   7   |\n";
-    cout << "|  불고기 패티 |   8   |\n";
-    cout << "|     김치     |   9   |\n";
-    cout << "|    초콜릿    |   10  |\n";
-    cout << "|     젤리     |   11  |\n";
-    cout << "|    누텔라    |   12  |\n";
-    cout << "|   마요네즈   |   13  |\n";
-    cout << "|     케첩     |   14  |\n";
-    cout << "|   스리라차   |   15  |\n";
-    cout << "|   청양고추   |   16  |\n";
-    cout << "|     된장     |   17  |\n";
-    cout << "|    삼겹살    |   18  |\n";
-    cout << " ----------------------\n";
-}
-void Order::plusIngredient() {
-    int i, temp;
-    cout << "메뉴를 입력해주세요.\n"
-         << "메뉴 입력이 끝나면 -1을 입력해서 종료해주세요.\n";
-    qMenu.push(0);
-    while (true) {
-        cin >> temp;
-        if (temp == -1) break;
-        if (temp < 1 || temp > 18) {
-            cout << "없는 메뉴입니다.\n";
-            continue;
+class Order {
+   public:
+    queue<int> qMenu;
+    void printIngredient() {
+        cout << "          MENU         \n";
+        cout << " ----------------------\n";
+        cout << "|      햄      |   1   |\n";
+        cout << "|     치즈     |   2   |\n";
+        cout << "|     치킨     |   3   |\n";
+        cout << "|    양상추    |   4   |\n";
+        cout << "|    베이컨    |   5   |\n";
+        cout << "|    토마토    |   6   |\n";
+        cout << "|  소고기 패티 |   7   |\n";
+        cout << "|  불고기 패티 |   8   |\n";
+        cout << "|     김치     |   9   |\n";
+        cout << "|    초콜릿    |   10  |\n";
+        cout << "|     젤리     |   11  |\n";
+        cout << "|    누텔라    |   12  |\n";
+        cout << "|   마요네즈   |   13  |\n";
+        cout << "|     케첩     |   14  |\n";
+        cout << "|   스리라차   |   15  |\n";
+        cout << "|   청양고추   |   16  |\n";
+        cout << "|     된장     |   17  |\n";
+        cout << "|    삼겹살    |   18  |\n";
+        cout << " ----------------------\n";
+    }
+    void plusIngredient() {
+        int i, temp;
+        cout << "메뉴를 입력해주세요.\n"
+             << "메뉴 입력이 끝나면 -1을 입력해서 종료해주세요.\n";
+        qMenu.push(0);
+        while (true) {
+            cin >> temp;
+            if (temp == -1) break;
+            if (temp < 1 || temp > 18) {
+                cout << "없는 메뉴입니다.\n";
+                continue;
+            }
+            qMenu.push(temp);
         }
-        qMenu.push(temp);
+        qMenu.push(0);
     }
-    qMenu.push(0);
-}
-void Order::printResult() {
-    int i;
-    queue<int> temp = qMenu;
-    while (!temp.empty()) {
-        cout << temp.front() << "\n";
-        temp.pop();
+    void printResult() {
+        int i;
+        queue<int> temp = qMenu;
+        while (!temp.empty()) {
+            cout << temp.front() << "\n";
+            temp.pop();
+        }
     }
-}
+};
