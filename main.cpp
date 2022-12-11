@@ -154,9 +154,8 @@ int main() {
     e.Quiz(answer);
   }
   cout << "\n" << "주문하신" << " ";
-  a.Pop(&Stemp);
   for (int i = 0; i < size; i++) {
-    cout << menu[a.Pop(&Stemp)];
+    cout << menu[a.Pop(&Stemp)-1];
   }
   cout << "버거 나왔습니다~~" << "\n";
   Stemp = s;
